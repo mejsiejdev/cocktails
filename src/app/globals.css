@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Rubik";
+  src: url("./fonts/Rubik-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Rubik";
+  src: url("./fonts/Rubik-Italic-VariableFont_wght.ttf");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Material Icons";
+  src: url("./fonts/MaterialSymbolsOutlined[FILL\,GRAD\,opsz\,wght].woff2");
+}
+
+.font-icons {
+  font-weight: 400;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  font-variation-settings: "FILL" 1;
+}
