@@ -10,7 +10,6 @@ export default function Home() {
   const [query, setQuery] = useState<string>();
   const [category, setCategory] = useState<string>();
   const [glass, setGlass] = useState<string>();
-  console.log("category: ", category, "glass: ", glass);
   return (
     <>
       <div className="flex flex-row h-dvh">
