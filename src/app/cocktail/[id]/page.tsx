@@ -1,5 +1,6 @@
 import Image from "next/image";
-import FavoriteButton from "../FavoriteButton";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import {cookies} from "next/headers";
 
 async function getCocktail(id: string) {
   const res = await fetch(`https://cocktails.solvro.pl/api/v1/cocktails/${id}`);
@@ -17,7 +18,6 @@ export default async function CocktailPage({
   params: { id: string };
 }) {
   const { data } = await getCocktail(params.id);
-  //console.log(data);
   return (
     <div className="p-4 flex flex-col items-center">
       <div className="flex flex-col gap-4">
