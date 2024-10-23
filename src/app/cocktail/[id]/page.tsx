@@ -1,4 +1,5 @@
 import Image from "next/image";
+import FavoriteButton from "../FavoriteButton";
 
 async function getCocktail(id: string) {
   const res = await fetch(`https://cocktails.solvro.pl/api/v1/cocktails/${id}`);
@@ -16,7 +17,7 @@ export default async function CocktailPage({
   params: { id: string };
 }) {
   const { data } = await getCocktail(params.id);
-  console.log(data);
+  //console.log(data);
   return (
     <div className="p-4 flex flex-col items-center">
       <div className="flex flex-col gap-4">
@@ -27,19 +28,23 @@ export default async function CocktailPage({
           height={400}
           className="rounded-md"
         />
-        <div className="flex flex-col gap-1">
-          <div className="flex flex-row gap-4 text-3xl font-semibold justify-between">
-            <p>{data.name}</p>
-            <p className="text-green-500 dark:text-green-300">
-              {!data.alcoholic && "0%"}
-            </p>
+        <div className="flex flex-row items-center gap-4 justify-between">
+          <div className="flex flex-col gap-1">
+            <div className="flex flex-row gap-4 text-3xl font-semibold justify-between">
+              <p>{data.name}</p>
+              <p className="text-green-500 dark:text-green-300">
+                {!data.alcoholic && "0%"}
+              </p>
+            </div>
+            <p>{data.category}</p>
           </div>
-          <p>{data.category}</p>
+          <FavoriteButton cocktailId={data.id} />
         </div>
         <div className="flex flex-col gap-1">
-          <p className="flex flex-row gap-4 text-xl font-semibold">
-            Ingredients
-          </p>
+          <div className="flex flex-row gap-2 items-center">
+            <span className="font-icons text-2xl">grocery</span>
+            <p className="text-xl font-semibold">Ingredients</p>
+          </div>
           <ul className="list-disc list-inside">
             {data.ingredients.map((ingredient, key) => (
               <li key={key}>
@@ -49,8 +54,9 @@ export default async function CocktailPage({
           </ul>
         </div>
         <div className="flex flex-col gap-1">
-          <div className="flex flex-row gap-4 text-xl font-semibold">
-            <p>Instructions</p>
+          <div className="flex flex-row gap-2 items-center">
+            <span className="font-icons text-2xl">list_alt</span>
+            <p className="text-xl font-semibold">Instructions</p>
           </div>
           <p>{data.instructions}</p>
         </div>
