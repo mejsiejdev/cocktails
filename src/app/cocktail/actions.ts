@@ -21,5 +21,4 @@ export async function setAsFavorite(id: string) {
       cookieStore.set("favorites", JSON.stringify([...currentValue, `${id}`]));
     }
   }
-  console.log(cookieStore.get("favorites")?.value);
 }

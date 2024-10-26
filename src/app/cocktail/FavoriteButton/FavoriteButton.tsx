@@ -6,8 +6,10 @@ export default async function FavoriteButton({ cocktailId }: { cocktailId: strin
   const cookieStore = await cookies()
   const favorites = cookieStore.get("favorites")?.value
   let isFavorite = false;
-  if (!favorites || !favorites.length) {}
+  if (typeof favorites !== "undefined" && favorites.includes(cocktailId)) {
+    isFavorite = true;
+  }
   return (
-    <Button/>
+    <Button cocktailId={cocktailId} isFavorite={isFavorite} />
   );
 }
