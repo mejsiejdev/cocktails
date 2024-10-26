@@ -13,6 +13,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         icons: ["Material Icons", "sans-serif"],
+        'icons-filled': ["Material Icons", "sans-serif"],
       },
     },
   },
