@@ -1,22 +1,21 @@
-"use client";
-
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 
 export default function FilterList({
   name,
   icon,
   options,
+  selected,
   onSelect,
 }: {
   name: string;
   icon: string;
   options: string[];
-  onSelect: Dispatch<SetStateAction<string | undefined>>;
+  selected: string;
+  onSelect: (arg0: string) => void;
 }) {
-  const [selected, setSelected] = useState<string>();
   const [showOptions, setShowOptions] = useState<boolean>(false);
   return (
-    <div className="flex flex-col gap-2 w-48">
+    <div className="flex flex-col gap-2 w-full">
       <button
         onClick={() => setShowOptions((showOptions) => !showOptions)}
         className="flex flex-row gap-4 justify-between items-center"
@@ -39,15 +38,7 @@ export default function FilterList({
                   ? "bg-sky-100 text-sky-500 dark:bg-sky-900 dark:text-sky-300"
                   : "bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-700 dark:hover:bg-neutral-600"
               } transition`}
-              onClick={() => {
-                if (option !== selected) {
-                  onSelect(option);
-                  setSelected(option);
-                } else {
-                  onSelect("");
-                  setSelected("");
-                }
-              }}
+              onClick={() => onSelect(option)}
             >
               {option}
             </button>

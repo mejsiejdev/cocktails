@@ -17,7 +17,7 @@ export default function Button({
         setFavorite(!favorite);
         setAsFavorite(cocktailId);
       }}
-      className={`text-3xl ${favorite ? "text-pink-500 dark:text-pink-500 font-icons-filled" : "font-icons"}`}
+      className={`text-3xl ${favorite ? "text-pink-500 font-icons-filled" : "font-icons"}`}
     >
       favorite
     </button>

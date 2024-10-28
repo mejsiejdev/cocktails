@@ -2,17 +2,21 @@
 
 import useSWRInfinite from "swr/infinite";
 import Cocktail from "@/app/Cocktails/Cocktail";
+import { useContext } from "react";
+import { FiltersContext } from "@/app/FiltersProvider";
+
+type Cocktail = {
+  id: string;
+  name: string;
+  instructions: string;
+  category: string;
+  alcoholic: boolean;
+  glass: string;
+  imageUrl: string;
+};
 
 async function getCocktails(url: string): Promise<{
-  data: {
-    id: string;
-    name: string;
-    instructions: string;
-    category: string;
-    alcoholic: boolean;
-    glass: string;
-    imageUrl: string;
-  }[];
+  data: Cocktail[];
 }> {
   const res = await fetch(url);
 
@@ -25,30 +29,33 @@ async function getCocktails(url: string): Promise<{
 
 const getKey = (
   pageIndex: number,
-  previousPageData: any,
+  previousPageData: {
+    data: Cocktail[];
+  },
   query: string | undefined,
   glass: string | undefined,
   category: string | undefined,
+  nonalcoholic: boolean,
 ) => {
   if (previousPageData && !previousPageData.data.length) return null; // reached the end
   return `https://cocktails.solvro.pl/api/v1/cocktails?${
     typeof query !== "undefined" ? `name=%${query}%&` : ""
   }${typeof glass !== "undefined" ? `glass=${glass}&` : ""}${
     typeof category !== "undefined" ? `category=${category}&` : ""
-  }page=${pageIndex + 1}&perPage=32`;
+  }${nonalcoholic ? "alcoholic=false&" : ""}page=${pageIndex + 1}&perPage=32`;
 };
 
-export default function Cocktails({
-  category,
-  glass,
-  query,
-}: {
-  category: string | undefined;
-  glass: string | undefined;
-  query: string | undefined;
-}) {
+export default function Cocktails() {
+  const { filters } = useContext(FiltersContext);
   const { data, size, setSize, isLoading } = useSWRInfinite(
-    (...args) => getKey(...args, query, glass, category),
+    (...args) =>
+      getKey(
+        ...args,
+        filters.query,
+        filters.glass,
+        filters.category,
+        filters.nonalcoholic,
+      ),
     getCocktails,
   );
   return (
@@ -88,7 +95,7 @@ export default function Cocktails({
             onClick={() => setSize(size + 1)}
             className="whitespace-nowrap h-min text-sm -mt-4 px-4 py-2 bg-neutral-700 hover:bg-neutral-600 transition rounded-md"
           >
-            Wczytaj więcej cocktaili!
+            Load more cocktails
           </button>
         </div>
       )}
