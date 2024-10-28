@@ -1,6 +1,5 @@
 import Image from "next/image";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
-import Link from "next/link";
 
 async function getCocktail(id: string): Promise<{
   data: {
