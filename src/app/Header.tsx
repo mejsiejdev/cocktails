@@ -30,7 +30,7 @@ export default function Header() {
         <input
           onChange={(e) => setInput(e.target.value)}
           placeholder="Search"
-          className="bg-neutral-100 dark:bg-neutral-700 w-full rounded-full h-full px-4 py-1 text-sm focus:ring-2 focus:ring-neutral-300 border-0 focus:border-1 border-neutral-300"
+          className="text-lg bg-neutral-100 dark:bg-neutral-700 w-full rounded-full h-full px-4 py-1 text-sm focus:ring-2 focus:ring-neutral-300 border-0 focus:border-1 border-neutral-300"
           type="text"
         />
         <button
