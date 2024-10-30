@@ -95,7 +95,7 @@ export default function Cocktails({ favorites }: { favorites: string[] }) {
           ),
         )}
       {data && data.slice(-1)[0].data.length ? (
-        <div className="w-full flex justify-center col-span-full pb-20">
+        <div className="w-full flex justify-center col-span-full">
           <button
             onClick={() => setSize(size + 1)}
             className="whitespace-nowrap h-min text-sm px-4 py-2 bg-neutral-700 hover:bg-neutral-600 transition rounded-md"
@@ -104,12 +104,14 @@ export default function Cocktails({ favorites }: { favorites: string[] }) {
           </button>
         </div>
       ) : (
-        <div className="w-full col-span-full row-span-full h-full flex flex-col gap-1 items-center justify-center">
-          <p className="text-lg">Couldn&#39;t find cocktails.</p>
-          <p className="text-sm text-neutral-300">
-            Maybe try resetting the filters?
-          </p>
-        </div>
+        !isLoading && (
+          <div className="w-full col-span-full row-span-full h-full flex flex-col gap-1 items-center justify-center">
+            <p className="text-lg">Couldn&#39;t find cocktails.</p>
+            <p className="text-sm text-neutral-300">
+              Maybe try resetting the filters?
+            </p>
+          </div>
+        )
       )}
     </div>
   );
