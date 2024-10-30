@@ -15,7 +15,7 @@ export default function Filters({
   const { filters, setFilters } = useContext(FiltersContext);
   return (
     showFilters && (
-      <div className="absolute left-0 top-0 max-w-64 w-full bg-white dark:bg-neutral-800 flex flex-col gap-4 p-4 h-dvh overflow-y-auto">
+      <div className="absolute left-0 top-0 max-w-64 w-full bg-neutral-50 dark:bg-neutral-800 flex flex-col gap-4 p-4 h-dvh overflow-y-auto">
         <div className="flex flex-row gap-4 justify-between">
           <div className="flex flex-row gap-2 items-center">
             <p className="font-icons text-3xl">tune</p>

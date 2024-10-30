@@ -39,7 +39,7 @@ export default async function CocktailPage({
         />
         <div className="flex flex-row items-center gap-4 justify-between">
           <div className="flex flex-col gap-1">
-            <div className="flex flex-row gap-4 text-3xl font-semibold justify-between">
+            <div className="flex flex-row gap-2 text-3xl font-semibold justify-between">
               <p>{data.name}</p>
               <p className="text-green-500 dark:text-green-300">
                 {!data.alcoholic && "0%"}

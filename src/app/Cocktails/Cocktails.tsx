@@ -107,7 +107,7 @@ export default function Cocktails({ favorites }: { favorites: string[] }) {
         !isLoading && (
           <div className="w-full col-span-full row-span-full h-full flex flex-col gap-1 items-center justify-center">
             <p className="text-lg">Couldn&#39;t find cocktails.</p>
-            <p className="text-sm text-neutral-300">
+            <p className="text-sm text-neutral-700 dark:text-neutral-300">
               Maybe try resetting the filters?
             </p>
           </div>

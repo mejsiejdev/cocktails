@@ -40,8 +40,17 @@ export default function Cocktail({
             favorite
           </button>
         </div>
-        <p className="text-sm">{category}</p>
-        {!alcoholic && <p className="text-green-500 dark:text-green-300">0%</p>}
+        <div className="flex flex-row items-center gap-1">
+          <p className="text-sm">
+            {category}
+            {!alcoholic && `,`}
+          </p>
+          {!alcoholic && (
+            <p className="text-green-500 dark:text-green-300 text-sm">
+              Non-alcoholic
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );
