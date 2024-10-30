@@ -45,7 +45,7 @@ const getKey = (
   }${nonalcoholic ? "alcoholic=false&" : ""}page=${pageIndex + 1}&perPage=32`;
 };
 
-export default function Cocktails() {
+export default function Cocktails({ favorites }: { favorites: string[] }) {
   const { filters } = useContext(FiltersContext);
   const { data, size, setSize, isLoading } = useSWRInfinite(
     (...args) =>
@@ -85,6 +85,7 @@ export default function Cocktails() {
                 category={category}
                 alcoholic={alcoholic}
                 key={key}
+                favorite={favorites.includes(`${id}`)}
               />
             ),
           ),
