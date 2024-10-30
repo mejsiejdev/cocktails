@@ -36,13 +36,15 @@ const getKey = (
   glass: string | undefined,
   category: string | undefined,
   nonalcoholic: boolean,
+  onlyFavorites: boolean,
+  favorites: string[],
 ) => {
   if (previousPageData && !previousPageData.data.length) return null; // reached the end
   return `https://cocktails.solvro.pl/api/v1/cocktails?${
     typeof query !== "undefined" ? `name=%${query}%&` : ""
   }${typeof glass !== "undefined" ? `glass=${glass}&` : ""}${
     typeof category !== "undefined" ? `category=${category}&` : ""
-  }${nonalcoholic ? "alcoholic=false&" : ""}page=${pageIndex + 1}&perPage=32`;
+  }${nonalcoholic ? "alcoholic=false&" : ""}${onlyFavorites ? `id=${favorites.toString()}&` : ""}page=${pageIndex + 1}&perPage=32`;
 };
 
 export default function Cocktails({ favorites }: { favorites: string[] }) {
@@ -55,6 +57,8 @@ export default function Cocktails({ favorites }: { favorites: string[] }) {
         filters.glass,
         filters.category,
         filters.nonalcoholic,
+        filters.favorites,
+        favorites,
       ),
     getCocktails,
   );
