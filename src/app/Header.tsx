@@ -2,6 +2,9 @@
 
 import { FiltersContext, ShowFiltersContext } from "@/app/FiltersProvider";
 import { useContext, useEffect, useState } from "react";
+import GithubLogoBlack from "@/public/images/github-mark.svg";
+import GithubLogoWhite from "@/public/images/github-mark-white.svg";
+import Image from "next/image";
 
 export default function Header() {
   const [input, setInput] = useState("");
@@ -37,6 +40,22 @@ export default function Header() {
         >
           tune
         </button>
+        <a
+          title="Go to the project's repository"
+          href={"https://github.com/mejsiejdev/cocktails"}
+          target={"_blank"}
+        >
+          <Image
+            className="min-w-7 max-w-7 flex-none block dark:hidden"
+            src={GithubLogoBlack}
+            alt={"Github Logo"}
+          />
+          <Image
+            className="min-w-7 max-w-7 flex-none hidden dark:block"
+            src={GithubLogoWhite}
+            alt={"Github Logo"}
+          />
+        </a>
       </header>
     </>
   );
