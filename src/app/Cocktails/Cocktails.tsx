@@ -44,7 +44,7 @@ const getKey = (
     typeof query !== "undefined" ? `name=%${query}%&` : ""
   }${typeof glass !== "undefined" ? `glass=${glass}&` : ""}${
     typeof category !== "undefined" ? `category=${category}&` : ""
-  }${nonalcoholic ? "alcoholic=false&" : ""}${onlyFavorites ? `id=${favorites.toString()}&` : ""}page=${pageIndex + 1}&perPage=32`;
+  }${nonalcoholic ? "alcoholic=false&" : ""}${onlyFavorites ? `id=${favorites.length !== 0 ? favorites.toString() : -1}&` : ""}page=${pageIndex + 1}&perPage=32`;
 };
 
 export default function Cocktails({ favorites }: { favorites: string[] }) {
