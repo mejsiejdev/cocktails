@@ -64,7 +64,7 @@ export default function Cocktails({ favorites }: { favorites: string[] }) {
   );
   return (
     <div
-      className={`h-dvh ${isLoading ? "overflow-y-hidden" : "overflow-y-auto"} w-full grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 px-4 pb-4 gap-8`}
+      className={`h-dvh ${isLoading ? "overflow-y-hidden" : "overflow-y-auto"} w-full grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 px-4 gap-8 pb-24`}
     >
       {/* Loading state UI */}
       {isLoading &&
